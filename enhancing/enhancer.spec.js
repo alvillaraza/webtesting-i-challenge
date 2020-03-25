@@ -24,19 +24,31 @@ describe("enhancer", function() {
 
   describe("fail", function() {
     it("should return -1 if durability level is > 16", function() {
-      const failedItem = fail({ item: "item", enhancement: 17, durability: 17 });
-      expect(failedItem.durability).toBe(16);
+      const failedItem = fail({
+        item: "item",
+        enhancement: 17,
+        durability: 80
+      });
+      expect(failedItem.durability).toBe(79);
     });
 
     it("should return durability level - 10 if enhancment level is >= 15", function() {
-      const failedItem = fail({ item: "item", enhancement: 15, durability: 6 });
-      
-      expect(failedItem.durability).toBe(5);
+      const failedItem = fail({
+        item: "item",
+        enhancement: 15,
+        durability: 65
+      });
+
+      expect(failedItem.durability).toBe(55);
     });
 
     it("should return durability level -5 if enhancment level is < 15", function() {
-      const failedItem = fail({ item: "item", enhancement: 14, durability: 10 });
-      expect(failedItem.durability).toBe(9);
+      const failedItem = fail({
+        item: "item",
+        enhancement: 14,
+        durability: 90
+      });
+      expect(failedItem.durability).toBe(85);
     });
   });
 });
